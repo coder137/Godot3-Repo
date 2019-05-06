@@ -1,0 +1,51 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://assets/runner/tile000.png" type="Texture" id=2]
+[ext_resource path="res://assets/runner/tile001.png" type="Texture" id=3]
+[ext_resource path="res://assets/runner/tile002.png" type="Texture" id=4]
+[ext_resource path="res://assets/runner/tile003.png" type="Texture" id=5]
+[ext_resource path="res://assets/runner/tile004.png" type="Texture" id=6]
+[ext_resource path="res://assets/runner/tile005.png" type="Texture" id=7]
+[ext_resource path="res://assets/runner/tile006.png" type="Texture" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 23.8171, 35.3384 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "wait",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
+} ]
+
+[node name="player" type="KinematicBody2D"]
+position = Vector2( 499.822, 253.495 )
+script = ExtResource( 1 )
+speed = 300
+
+[node name="collision" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="sprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 3, 3 )
+frames = SubResource( 2 )
+animation = "wait"
+
+[node name="camera" type="Camera2D" parent="."]
+current = true
+
+[node name="label" type="Label" parent="."]
+margin_left = -39.0
+margin_top = -59.0
+margin_right = 38.0
+margin_bottom = -38.0
+text = "Test"
+align = 1
+valign = 1
